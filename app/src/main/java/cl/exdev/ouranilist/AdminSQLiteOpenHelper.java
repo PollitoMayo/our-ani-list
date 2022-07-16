@@ -13,7 +13,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE users(id INT PRIMARY KEY, name TEXT, userName TEXT, email TEXT, password TEXT)");
+        sqLiteDatabase.execSQL("CREATE TABLE users(userName TEXT UNIQUE PRIMARY KEY, name TEXT, email TEXT, password TEXT)");
     }
 
     @Override
