@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onSingUpPressed(View view) {
-        String username = "mapacheverdugo3";
+        String username = "Pollo";
         String password = "Pollo123";
         String email = "jorgeverdugoch3@gmail.com";
         String name = "Jorge Verdugo";
