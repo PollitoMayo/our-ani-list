@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">OurAniList</string>
-    <string name="login_password_label">Ingrese contraseña</string>
-    <string name="login_username_label">Nombre de usuario</string>
+    <string name="password_label">Ingrese contraseña</string>
+    <string name="username_label">Nombre de usuario</string>
     <string name="login_button_text">Ingresar</string>
+    <string name="full_name_label">Nombre completo</string>
+    <string name="email_label">Correo electrónico</string>
+    <string name="retry_password_label">Repetir contraseña</string>
     <string name="login_sign_up_button_text">Registro</string>
 </resources>

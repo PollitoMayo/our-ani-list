@@ -24,7 +24,7 @@ public class SignUpActivity extends AppCompatActivity {
         /*_username = (EditText)findViewById(R.id.username_text);
         _password = (EditText)findViewById(R.id.password_text);*/
     }
-/*
+
     public void onSingUpPressed(View view) {
         String username = "Pollo";
         String password = "Pollo123";
@@ -66,5 +66,5 @@ public class SignUpActivity extends AppCompatActivity {
 
         db.insert("users", null, newUser);
     }
-*/
+
 }
