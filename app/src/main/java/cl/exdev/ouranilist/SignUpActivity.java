@@ -11,20 +11,20 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
-    private EditText _username;
-    private EditText _password;
+    /*private EditText _username;
+    private EditText _password;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_sign_up);
 
-        _username = (EditText)findViewById(R.id.username_text);
-        _password = (EditText)findViewById(R.id.password_text);
+        /*_username = (EditText)findViewById(R.id.username_text);
+        _password = (EditText)findViewById(R.id.password_text);*/
     }
-
+/*
     public void onSingUpPressed(View view) {
         String username = "Pollo";
         String password = "Pollo123";
@@ -66,4 +66,5 @@ public class SignupActivity extends AppCompatActivity {
 
         db.insert("users", null, newUser);
     }
+*/
 }

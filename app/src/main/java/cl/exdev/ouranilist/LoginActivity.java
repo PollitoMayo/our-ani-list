@@ -2,15 +2,18 @@ package cl.exdev.ouranilist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "";
     private EditText _username;
     private EditText _password;
 
@@ -27,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         String username = _username.getText().toString();
         String password = _password.getText().toString();
 
-        if(username == null || username.compareTo("") == 0 || password == null || password.compareTo("") == 0) {
+        if(username.compareTo("") == 0 || password.compareTo("") == 0) {
             Toast.makeText(this, "Faltan datos", Toast.LENGTH_SHORT).show();
         }
 
@@ -49,9 +52,16 @@ public class LoginActivity extends AppCompatActivity {
         boolean existFirstElement = cursor.moveToFirst();
 
         if (existFirstElement) {
-            return cursor.getString(0);
+            String name = cursor.getString(0);
+            cursor.close();
+            return name;
         }
-
+        cursor.close();
         return null;
+    }
+
+    public void goToSignUp(View view) {
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
     }
 }
