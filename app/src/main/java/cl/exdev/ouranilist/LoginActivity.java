@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import cl.exdev.ouranilist.database.AdminSQLiteOpenHelper;
+import cl.exdev.ouranilist.models.User;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,20 +37,19 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Faltan datos", Toast.LENGTH_SHORT).show();
         }
 
-        String name = login(username, password);
+        User user = login(username, password);
 
-        if (name != null) {
+        if (user != null) {
             Intent intent = new Intent(this, MainActivity.class);
-            Toast.makeText(this, "¡Bienvenido " +  name + "!", Toast.LENGTH_LONG).show();
-            // TO DO: Serializable para enviar todo el objeto
-            intent.putExtra("name", name);
+            Toast.makeText(this, "¡Bienvenido " +  user.getName() + "!", Toast.LENGTH_LONG).show();
+            intent.putExtra("user", user);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Usuario o contraseña incorrecta", Toast.LENGTH_LONG).show();
         }
     }
 
-    public String login(String username, String password) {
+    public User login(String username, String password) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "ouranilist", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
 
@@ -57,9 +58,12 @@ public class LoginActivity extends AppCompatActivity {
         boolean existFirstElement = cursor.moveToFirst();
 
         if (existFirstElement) {
-            String name = cursor.getString(0);
+            User user = new User();
+            user.setName(cursor.getString(0));
+            user.setUsername(cursor.getString(1));
+            user.setEmail(cursor.getString(3));
             cursor.close();
-            return name;
+            return user;
         }
         cursor.close();
         return null;

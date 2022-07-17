@@ -14,22 +14,23 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 
 import cl.exdev.ouranilist.R;
+import cl.exdev.ouranilist.models.Anime;
 
-public class AnimesAdapter extends ArrayAdapter<String> {
+public class AnimesAdapter extends ArrayAdapter<Anime> {
         private Context mContext;
 
-        public AnimesAdapter(Context context, String[] animes) {
+        public AnimesAdapter(Context context, ArrayList<Anime> animes) {
             super(context, 0, animes);
             mContext = context;
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            String anime = getItem(position);
+            Anime anime = getItem(position);
 
-            String animeName = anime;
-            String animeCategory = "Romcom";
-            String posterUrl = "https://media.kitsu.io/anime/45619/poster_image/tiny-d78c06d3e95dcd6603688e2e737f359d.jpeg";
+            String animeName = anime.getAttributes().getCanonicalTitle();
+            String animeCategory = anime.getAttributes().getStatus();
+            String posterUrl = anime.getAttributes().getPosterImage().getTiny();
 
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_anime, parent, false);

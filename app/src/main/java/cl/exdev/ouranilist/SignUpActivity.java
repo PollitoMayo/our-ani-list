@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import cl.exdev.ouranilist.database.AdminSQLiteOpenHelper;
+import cl.exdev.ouranilist.models.User;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -48,11 +49,10 @@ public class SignUpActivity extends AppCompatActivity {
             if (checkIfUserExist(username, email)) {
                 Toast.makeText(this, "El usuario " + username + " ya existe", Toast.LENGTH_LONG).show();
             } else {
-                signUpUser(username, password, email, name);
+                User user = signUpUser(username, password, email, name);
                 Toast.makeText(this, "Usuario creado con éxito", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(this, MainActivity.class);
-                // TO DO: Serializable para enviar todo el objeto
-                intent.putExtra("name", name);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         }
@@ -73,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity {
         return existFirstElement;
     }
 
-    public void signUpUser(String username, String password, String email, String name) {
+    public User signUpUser(String username, String password, String email, String name) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "ouranilist", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
 
@@ -84,6 +84,11 @@ public class SignUpActivity extends AppCompatActivity {
         newUser.put("name", name);
 
         db.insert("users", null, newUser);
+        User user = new User();
+        user.setEmail(email);
+        user.setUsername(username);
+        user.setName(name);
+        return user;
     }
 
 }
