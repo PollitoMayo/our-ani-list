@@ -7,4 +7,5 @@
     <string name="email_label">Correo electrónico</string>
     <string name="retry_password_label">Repetir contraseña</string>
     <string name="login_sign_up_button_text">Registro</string>
+    <string name="logout_text">Cerrar sesión</string>
 </resources>

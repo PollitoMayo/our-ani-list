@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import cl.exdev.ouranilist.database.AdminSQLiteOpenHelper;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText _username;

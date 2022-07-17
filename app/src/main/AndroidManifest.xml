@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OurAniList">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
@@ -20,10 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".LoginActivity" />
+        </activity>
+        <activity android:name=".MainActivity">
         </activity>
     </application>
 
