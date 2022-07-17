@@ -8,4 +8,6 @@
     <string name="retry_password_label">Repetir contraseña</string>
     <string name="login_sign_up_button_text">Registro</string>
     <string name="logout_text">Cerrar sesión</string>
+    <string name="previous_button_text">Anterior</string>
+    <string name="next_button_text">Siguiente</string>
 </resources>
