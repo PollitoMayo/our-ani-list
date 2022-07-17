@@ -3,6 +3,7 @@ package cl.exdev.ouranilist;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,29 +14,45 @@ import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    /*private EditText _username;
-    private EditText _password;*/
+    private EditText _username;
+    private EditText _fullname;
+    private EditText _email;
+    private EditText _password;
+    private EditText _retryPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        /*_username = (EditText)findViewById(R.id.username_text);
-        _password = (EditText)findViewById(R.id.password_text);*/
+        _username = (EditText)findViewById(R.id.username_text);
+        _fullname = (EditText)findViewById(R.id.full_name_text);
+        _email = (EditText)findViewById(R.id.email_text);
+        _password = (EditText)findViewById(R.id.password_text);
+        _retryPassword = (EditText)findViewById(R.id.retry_password_text);
+
     }
 
     public void onSingUpPressed(View view) {
-        String username = "Pollo";
-        String password = "Pollo123";
-        String email = "jorgeverdugoch3@gmail.com";
-        String name = "Jorge Verdugo";
+        String username = _username.getText().toString();
+        String name = _fullname.getText().toString();
+        String email = _email.getText().toString();
+        String password = _password.getText().toString();
+        String retryPassword = _retryPassword.getText().toString();
 
-        if (checkIfUserExist(username, email)) {
-            Toast.makeText(this, "El usuario " +  username + " ya existe", Toast.LENGTH_LONG).show();
+        if(password.compareTo(retryPassword) != 0) {
+            Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_LONG).show();
         } else {
-            signUpUser(username, password, email, name);
-            Toast.makeText(this, "Usuario creado con éxito", Toast.LENGTH_LONG).show();
+            if (checkIfUserExist(username, email)) {
+                Toast.makeText(this, "El usuario " + username + " ya existe", Toast.LENGTH_LONG).show();
+            } else {
+                signUpUser(username, password, email, name);
+                Toast.makeText(this, "Usuario creado con éxito", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, MainActivity.class);
+                // TO DO: Serializable para enviar todo el objeto
+                intent.putExtra("name", name);
+                startActivity(intent);
+            }
         }
     }
 

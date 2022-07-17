@@ -37,7 +37,11 @@ public class LoginActivity extends AppCompatActivity {
         String name = login(username, password);
 
         if (name != null) {
+            Intent intent = new Intent(this, MainActivity.class);
             Toast.makeText(this, "¡Bienvenido " +  name + "!", Toast.LENGTH_LONG).show();
+            // TO DO: Serializable para enviar todo el objeto
+            intent.putExtra("name", name);
+            startActivity(intent);
         } else {
             Toast.makeText(this, "Usuario o contraseña incorrecta", Toast.LENGTH_LONG).show();
         }
