@@ -1,4 +1,4 @@
-package cl.exdev.ouranilist;
+package cl.exdev.ouranilist.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import cl.exdev.ouranilist.R;
 import cl.exdev.ouranilist.models.Anime;
 import cl.exdev.ouranilist.models.KitsuResponse;
 import cl.exdev.ouranilist.models.User;
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Cerrando sesión de " + user.getName(), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

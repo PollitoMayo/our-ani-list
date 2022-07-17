@@ -10,23 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OurAniList">
         <activity
-            android:name=".LoginActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"
+            android:name=".activities.LoginActivity"
+            android:theme="@style/Theme.OurAniList.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity"
-            android:parentActivityName=".LoginActivity">
+        <activity
+            android:name=".activities.SignUpActivity"
+            android:parentActivityName=".activities.LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity" />
+                android:value=".activities.LoginActivity" />
         </activity>
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".activities.MainActivity"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package cl.exdev.ouranilist;
+package cl.exdev.ouranilist.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import cl.exdev.ouranilist.R;
 import cl.exdev.ouranilist.database.AdminSQLiteOpenHelper;
 import cl.exdev.ouranilist.models.User;
 
@@ -54,6 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
+                finish();
             }
         }
     }

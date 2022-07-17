@@ -1,15 +1,16 @@
-package cl.exdev.ouranilist;
+package cl.exdev.ouranilist.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import cl.exdev.ouranilist.R;
 import cl.exdev.ouranilist.database.AdminSQLiteOpenHelper;
 import cl.exdev.ouranilist.models.User;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "¡Bienvenido " +  user.getName() + "!", Toast.LENGTH_LONG).show();
             intent.putExtra("user", user);
             startActivity(intent);
+            finish();
         } else {
             Toast.makeText(this, "Usuario o contraseña incorrecta", Toast.LENGTH_LONG).show();
         }
