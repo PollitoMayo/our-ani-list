@@ -3,4 +3,5 @@
     <string name="login_password_label">Ingrese contraseña</string>
     <string name="login_username_label">Nombre de usuario</string>
     <string name="login_button_text">Ingresar</string>
+    <string name="logout_text">Cerrar sesión</string>
 </resources>

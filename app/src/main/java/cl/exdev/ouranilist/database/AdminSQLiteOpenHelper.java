@@ -1,4 +1,4 @@
-package cl.exdev.ouranilist;
+package cl.exdev.ouranilist.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
