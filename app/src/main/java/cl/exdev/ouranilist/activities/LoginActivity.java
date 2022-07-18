@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         String username = _username.getText().toString();
         String password = _password.getText().toString();
 
-        if(username.compareTo("") == 0 || password.compareTo("") == 0) {
+        if (username.compareTo("") == 0 || password.compareTo("") == 0) {
             Toast.makeText(this, "Faltan datos", Toast.LENGTH_SHORT).show();
         }
 
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public User login(String username, String password) {
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "ouranilist", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this);
         SQLiteDatabase db = admin.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT name, username, password, email FROM users WHERE username = '" + username + "' AND password = '" + password + "'", null);

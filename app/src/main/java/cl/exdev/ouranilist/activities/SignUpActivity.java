@@ -61,7 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public boolean checkIfUserExist(String username, String email) {
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "ouranilist", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this);
         SQLiteDatabase db = admin.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT name FROM users WHERE username = '" + username + "' OR email = '" + email + "'", null);
@@ -76,7 +76,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public User signUpUser(String username, String password, String email, String name) {
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "ouranilist", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this);
         SQLiteDatabase db = admin.getWritableDatabase();
 
         ContentValues newUser = new ContentValues();
