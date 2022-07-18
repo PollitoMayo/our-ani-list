@@ -39,8 +39,11 @@ public class MainActivity extends AppCompatActivity {
         _retrofit = new Retrofit.Builder().baseUrl("https://kitsu.io/api/edge/").addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        user = (User) getIntent().getExtras().getSerializable("user");
-        setTitle("La lista de " + user.getName());
+
+        if (getIntent().getExtras() != null) {
+            user = (User) getIntent().getExtras().getSerializable("user");
+            setTitle("La lista de " + user.getName());
+        }
 
         lvAnimes = (ListView) findViewById(R.id.animes_list);
 
@@ -58,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
                 lvAnimes.setAdapter(adapter);
 
                 lvAnimes.setOnItemClickListener((parent, view, i, id) -> {
-                    String animeName = animes.get(i).getAttributes().getCanonicalTitle();
-                    Toast.makeText(MainActivity.this, animeName, Toast.LENGTH_LONG).show();
+                    Anime selectedAnime = animes.get(i);
+                    Intent intent = new Intent(context, AnimeActivity.class);
+                    intent.putExtra("anime", selectedAnime);
+                    startActivity(intent);
                 });
             }
 

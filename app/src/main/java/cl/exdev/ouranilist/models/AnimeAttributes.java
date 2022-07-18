@@ -1,9 +1,13 @@
 package cl.exdev.ouranilist.models;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class AnimeAttributes implements Serializable {
-    private String slug;
     private String synopsis;
     private String description;
     private int coverImageTopOffset;
@@ -18,14 +22,6 @@ public class AnimeAttributes implements Serializable {
     private AnimeImageSet coverImage;
     private int episodeCount;
     private boolean nsfw;
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
-    }
 
     public String getSynopsis() {
         return synopsis;
@@ -67,8 +63,20 @@ public class AnimeAttributes implements Serializable {
         this.averageRating = averageRating;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public Date getStartDate() {
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    public int getStartYear() {
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Santiago"));
+        cal.setTime(getStartDate());
+        return cal.get(Calendar.YEAR);
     }
 
     public void setStartDate(String startDate) {
