@@ -7,7 +7,7 @@ import retrofit2.http.Query;
 
 public interface KitsuService {
     @GET("anime")
-    public Call<KitsuResponse> searchAnimeList(@Query("filter[text]") String filterText, @Query("page[limit]") int limit, @Query("page[offset]") int offset);
+    public Call<KitsuResponse> searchAnimeList(@Query("filter[text]") String filterText, @Query("page[limit]") int limit, @Query("page[offset]") int offset, @Query("sort") String sort);
 
     @GET("anime")
     public Call<KitsuResponse> getAnimeByIds(@Query("filter[id]") String filterId);

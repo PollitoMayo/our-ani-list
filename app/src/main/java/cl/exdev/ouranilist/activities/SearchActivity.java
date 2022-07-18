@@ -57,7 +57,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
 
     private void getAnimes(Context context, String filter, int offset){
         KitsuService service = _retrofit.create(KitsuService.class);
-        service.searchAnimeList(filter.compareTo("") == 0 ? null : filter, limit, offset).enqueue(new Callback<KitsuResponse>() {
+        service.searchAnimeList(filter.compareTo("") == 0 ? null : filter, limit, offset, "popularityRank,ratingRank").enqueue(new Callback<KitsuResponse>() {
             @Override
             public void onResponse(Call<KitsuResponse> call, Response<KitsuResponse> response) {
                 KitsuResponse kitsuResponse = response.body();
