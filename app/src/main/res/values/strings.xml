@@ -10,4 +10,5 @@
     <string name="logout_text">Cerrar sesión</string>
     <string name="previous_button_text">Anterior</string>
     <string name="next_button_text">Siguiente</string>
+    <string name="synopsis_label">Sinópsis</string>
 </resources>

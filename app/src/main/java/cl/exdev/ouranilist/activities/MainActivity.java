@@ -19,8 +19,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        user = (User) getIntent().getExtras().getSerializable("user");
-        setTitle("La lista de " + user.getName());
+        
+        if (getIntent().getExtras() != null) {
+            user = (User) getIntent().getExtras().getSerializable("user");
+            setTitle("La lista de " + user.getName());
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
