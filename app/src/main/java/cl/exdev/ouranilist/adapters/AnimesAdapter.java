@@ -29,7 +29,7 @@ public class AnimesAdapter extends ArrayAdapter<Anime> {
             Anime anime = getItem(position);
 
             String animeName = anime.getAttributes().getCanonicalTitle();
-            String animeCategory = anime.getAttributes().getStatus();
+            String animeYear = String.valueOf(anime.getAttributes().getStartYear());
             String posterUrl = anime.getAttributes().getPosterImage().getTiny();
 
             if (convertView == null) {
@@ -40,7 +40,7 @@ public class AnimesAdapter extends ArrayAdapter<Anime> {
             tvAnimeName.setText(animeName);
 
             TextView tvAnimeCategory = (TextView) convertView.findViewById(R.id.anime_category);
-            tvAnimeCategory.setText(animeCategory);
+            tvAnimeCategory.setText(animeYear);
 
             ImageView ivAnimePoster = (ImageView) convertView.findViewById(R.id.anime_poster);
 
