@@ -33,7 +33,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     private Retrofit _retrofit;
     private SearchView search;
     private int limit = 10;
-    private int offset = 1;
+    private int offset = 0;
     private String filter = "";
 
     @Override
@@ -45,7 +45,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
 
         _retrofit = new Retrofit.Builder().baseUrl("https://kitsu.io/api/edge/").addConverterFactory(GsonConverterFactory.create())
                 .build();
-        offset = 1;
+        offset = 0;
         filter = "";
 
         lvAnimes = (ListView) findViewById(R.id.animes_list);
@@ -57,7 +57,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
 
     private void getAnimes(Context context, String filter, int offset){
         KitsuService service = _retrofit.create(KitsuService.class);
-        service.searchAnimeList(filter.compareTo("") == 0 ? null : filter, limit, offset, "popularityRank,ratingRank").enqueue(new Callback<KitsuResponse>() {
+        String sort = filter.compareTo("") == 0 ? "popularityRank,ratingRank" : null;
+        service.searchAnimeList(filter.compareTo("") == 0 ? null : filter, limit, offset, sort).enqueue(new Callback<KitsuResponse>() {
             @Override
             public void onResponse(Call<KitsuResponse> call, Response<KitsuResponse> response) {
                 KitsuResponse kitsuResponse = response.body();
@@ -83,7 +84,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     }
 
     public void previousItems(View view) {
-        if (offset != 1) {
+        if (offset != 0) {
             int newOffset = offset - limit;
             offset = newOffset;
             this.getAnimes(this, filter, newOffset);
@@ -103,7 +104,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     @Override
     public boolean onQueryTextSubmit(String query) {
         filter = query;
-        int newOffset = 1;
+        int newOffset = 0;
         offset = newOffset;
         this.getAnimes(this, query, newOffset);
         return false;
@@ -112,7 +113,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     @Override
     public boolean onQueryTextChange(String newText) {
         if (newText.compareTo("") == 0) {
-            int newOffset = 1;
+            int newOffset = 0;
             offset = newOffset;
             this.getAnimes(this, "", newOffset);
         }
